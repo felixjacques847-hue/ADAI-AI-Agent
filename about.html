@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADAI AI Agent</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(135deg, #0d6efd, #0c4bbd);
+            color: white;
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: #a0d8ff;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -8px;
+            left: 0;
+            background: #fff;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 110, 253, 0.8), rgba(12, 75, 189, 0.9)), url('https://source.unsplash.com/random/1600x900/?ai,technology') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.2rem;
+            animation: fadeInDown 1.2s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.6rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1.2s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #fff;
+            color: #0d6efd;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            background: #a0d8ff;
+            color: #fff;
+        }
+        
+        /* About Section */
+        #about {
+            padding: 6rem 2rem;
+            background: white;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #0d6efd;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 5px;
+            background: #0d6efd;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Services Section */
+        #services {
+            padding: 6rem 2rem;
+            background: #f1f5f9;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #0d6efd;
+        }
+        
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0c4bbd;
+            color: white;
+            text-align: center;
+            padding: 2.5rem 0;
+            font-size: 1rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ADAI <span>AI Agent</span></div>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ADAI AI Agent</h1>
+            <p>Empowering the ADAI Circle with Intelligent AI Solutions</p>
+            <a href="about.html" class="btn">Discover More</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About ADAI Circle</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ADAI Circle is a pioneering community dedicated to advancing Artificial Intelligence and Decentralized Applications. Our mission is to foster innovation, collaboration, and ethical AI development within a global network of developers, researchers, and enthusiasts.</p>
+                    <p>Founded in 2024, ADAI AI Agent serves as the intelligent core of the circle—providing autonomous agents that streamline workflows, enhance decision-making, and integrate seamlessly with blockchain ecosystems like Cardano (ADA).</p>
+                    <p>We believe in democratizing AI technology, making powerful tools accessible to everyone in the ADAI ecosystem. From smart contract automation to predictive analytics, we're building the future of decentralized intelligence.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://source.unsplash.com/random/600x600/?ai,neural-network" alt="AI Neural Network">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Our AI Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Autonomous AI Agents</h3>
+                    <p>Deploy custom AI agents that handle tasks like data analysis, transaction monitoring, and automated responses on the Cardano blockchain.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3>Smart Contract Intelligence</h3>
+                    <p>AI-powered auditing and optimization tools to ensure secure, efficient smart contracts with real-time risk assessment.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Leverage machine learning models to forecast market trends, user behavior, and network performance in the ADA ecosystem.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Decentralized Security</h3>
+                    <p>AI-driven threat detection and anomaly monitoring to protect dApps and wallets from emerging vulnerabilities.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Community Automation</h3>
+                    <p>Intelligent bots for Discord, governance voting assistance, and personalized onboarding for new ADAI Circle members.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Custom AI Integration</h3>
+                    <p>Tailored AI solutions integrated with your existing ADA projects— from NFTs to DeFi protocols.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 ADAI Circle - ADAI AI Agent. Pioneering Decentralized Intelligence.</p>
+    </footer>
+</body>
+</html>
