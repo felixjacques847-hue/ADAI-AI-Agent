@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ADAI AI Agent — Projects</title>
+  <link rel="stylesheet" href="assets/css/projects.css" />
+</head>
+
+<style>
+    :root{
+  --bg:#0f1724; /* dark background for hero */
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#0ea5a4;
+  --max-width:1100px;
+  --radius:10px;
+  --glass: rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Roboto,system-ui,-apple-system,"Helvetica Neue",Arial;
+  color:#0b1220;
+  background:linear-gradient(180deg,#f8fafc 0%,#ffffff 100%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* container */
+.container{max-width:var(--max-width);margin:0 auto;padding:20px}
+
+/* hero */
+.hero{
+  background:linear-gradient(90deg,var(--bg), #263240);
+  color:#fff;
+  padding:36px 0;
+  margin-bottom:18px;
+}
+.hero .container{display:flex;flex-direction:column;gap:6px}
+.hero h1{margin:0;font-size:28px;letter-spacing:-0.5px}
+.lead{margin:0;opacity:0.95;color:rgba(255,255,255,0.9)}
+
+/* controls */
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.search-wrap{flex:1;min-width:220px}
+#search{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid rgba(11,18,32,0.08);
+  box-shadow:0 1px 0 rgba(11,18,32,0.02);
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{
+  background:transparent;border:1px solid rgba(11,18,32,0.06);
+  padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--muted)
+}
+.filter.active{background:var(--accent);color:white;border-color:transparent}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+/* card */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:14px;
+  box-shadow:0 6px 18px rgba(12,18,28,0.06);
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:120px;
+}
+.card h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:10px}
+.desc{margin:0 0 8px;color:#283044}
+.notes{margin:0 0 12px;color:var(--muted);font-size:13px}
+.card-foot{display:flex;justify-content:space-between;align-items:center}
+
+/* tags & badges */
+.tags span{display:inline-block;background:var(--glass);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted);margin-right:6px}
+.status.badge{font-size:12px;padding:6px 8px;border-radius:999px;color:#fff}
+.status.in-design{background:#7c3aed}
+.status.planned{background:#f97316}
+.status.in-progress{background:#10b981}
+.status.complete{background:#06b6d4}
+
+/* buttons */
+.btn{background:transparent;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn.small{background:linear-gradient(180deg,#fff,#f3f4f6);border:1px solid rgba(11,18,32,0.06)}
+
+/* modal */
+.modal{display:none}
+.modal.open{display:block}
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(2,6,23,0.45);
+  backdrop-filter:blur(4px);z-index:40;
+}
+.modal-panel{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:white;padding:20px;border-radius:12px;z-index:50;max-width:680px;width:92%;
+  box-shadow:0 30px 60px rgba(2,6,23,0.4);
+}
+.modal-close{
+  position:absolute;right:12px;top:8px;background:transparent;border:none;font-size:22px;cursor:pointer;
+}
+.muted{color:var(--muted);font-size:14px;margin-top:8px}
+
+/* footer */
+.footer{padding:18px 20px;color:var(--muted);font-size:13px;text-align:center;margin-top:18px}
+</style>
+
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Projects</h1>
+      <p class="lead">Designs and projects planned or in-progress for the ADAI AI Agent.</p>
+    </div>
+  </header>
+
+  <section class="controls container">
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Search projects, tags, notes..." />
+    </div>
+    <div class="filters" role="tablist" aria-label="Filter by status">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="planned">Planned</button>
+      <button class="filter" data-filter="in-design">In design</button>
+      <button class="filter" data-filter="in-progress">In progress</button>
+      <button class="filter" data-filter="complete">Complete</button>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="projectsGrid" class="grid" aria-live="polite">
+      <article class="card" data-status="in-design" data-tags="core,api">
+        <div class="card-body">
+          <h3>ADAI Core <span class="status badge in-design">In design</span></h3>
+          <p class="desc">Core agent framework and API for orchestrating AI modules and workflows.</p>
+          <p class="notes">Notes: Define plugin interface and basic data schemas.</p>
+        </div>
+        <footer class="card-foot">
+          <div class="tags"><span>#core</span> <span>#api</span></div>
+          <button class="btn small details">View details</button>
+        </footer>
+      </article>
+
+      <article class="card" data-status="planned" data-tags="education,ux">
+        <div class="card-body">
+          <h3>AI Education Platform <span class="status badge planned">Planned</span></h3>
+          <p class="desc">Interactive learning portal using the agent for personalized lessons and quizzes.</p>
+          <p class="notes">Notes: Curriculum and UX flows to be drafted.</p>
+        </div>
+        <footer class="card-foot">
+          <div class="tags"><span>#education</span> <span>#ux</span></div>
+          <button class="btn small details">View details</button>
+        </footer>
+      </article>
+
+      <article class="card" data-status="in-progress" data-tags="visualization,data">
+        <div class="card-body">
+          <h3>Open Data Visualizer <span class="status badge in-progress">In progress</span></h3>
+          <p class="desc">Visualization studio to explore public datasets with AI-assisted insights.</p>
+          <p class="notes">Notes: Prototype of charts and dataset import completed.</p>
+        </div>
+        <footer class="card-foot">
+          <div class="tags"><span>#visualization</span> <span>#data</span></div>
+          <button class="btn small details">View details</button>
+        </footer>
+      </article>
+
+      <article class="card" data-status="planned" data-tags="health,bot">
+        <div class="card-body">
+          <h3>Health Assist Bot <span class="status badge planned">Planned</span></h3>
+          <p class="desc">A conversational assistant for basic triage and health resource guidance.</p>
+          <p class="notes">Notes: Privacy and compliance considerations required.</p>
+        </div>
+        <footer class="card-foot">
+          <div class="tags"><span>#health</span> <span>#bot</span></div>
+          <button class="btn small details">View details</button>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button id="modalClose" class="modal-close" aria-label="Close">×</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <p id="modalNotes" class="muted"></p>
+      <div id="modalTags" class="tags"></div>
+    </div>
+    <div class="modal-backdrop"></div>
+  </div>
+
+  <footer class="container footer">
+    <small>Contribute: edit this file to add projects. Use statuses: Planned, In design, In progress, Complete.</small>
+  </footer>
+
+  <script>
+    // Minimal interactivity: filter, search, modal
+    const grid = document.getElementById('projectsGrid');
+    const cards = Array.from(grid.querySelectorAll('.card'));
+    const filters = document.querySelectorAll('.filter');
+    const search = document.getElementById('search');
+
+    function applyFilter(filter, query = '') {
+      const q = query.trim().toLowerCase();
+      cards.forEach(card => {
+        const status = card.dataset.status;
+        const tags = card.dataset.tags || '';
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        const desc = card.querySelector('.desc').innerText.toLowerCase();
+        const matchesFilter = (filter === 'all') || (status === filter);
+        const matchesQuery = !q || (title + ' ' + desc + ' ' + tags).includes(q);
+        card.style.display = (matchesFilter && matchesQuery) ? '' : 'none';
+      });
+    }
+
+    filters.forEach(btn => btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.filter, search.value);
+    }));
+
+    search.addEventListener('input', (e) => {
+      const active = document.querySelector('.filter.active').dataset.filter;
+      applyFilter(active, e.target.value);
+    });
+
+    // Modal logic
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalNotes = document.getElementById('modalNotes');
+    const modalTags = document.getElementById('modalTags');
+    const modalClose = document.getElementById('modalClose');
+
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('.card');
+      if (!card) return;
+      const clickedDetails = e.target.closest('.details');
+      if (!clickedDetails) return;
+      modalTitle.textContent = card.querySelector('h3').firstChild.textContent.trim();
+      modalDesc.textContent = card.querySelector('.desc').textContent;
+      modalNotes.textContent = card.querySelector('.notes').textContent;
+      modalTags.innerHTML = '';
+      (card.dataset.tags || '').split(',').filter(Boolean).forEach(t => {
+        const span = document.createElement('span');
+        span.textContent = '#' + t.trim();
+        modalTags.appendChild(span);
+      });
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>
