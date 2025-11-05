@@ -1,5 +1,5 @@
 
-    /* Reset and Base Styles */
+    /* Reset AND Base Styles for the Document */
     * {
         margin: 0;
         padding: 0;
@@ -18,7 +18,7 @@
         color: inherit;
     }
     
-    /* Header and Navigation */
+    /* Heading and Navigation menu */
     header {
         background: linear-gradient(135deg, #0d6efd, #0c4bbd);
         color: white;
@@ -76,7 +76,7 @@
         width: 100%;
     }
     
-    /* Hero Section */
+    /* Hero Section with good style */
     .hero {
         background: linear-gradient(rgba(13, 110, 253, 0.8), rgba(12, 75, 189, 0.9)), url('https://source.unsplash.com/random/1600x900/?ai,technology') no-repeat center center/cover;
         height: 100vh;
@@ -123,7 +123,7 @@
         color: #fff;
     }
     
-    /* About Section */
+    /* About Section with all the elements */
     #about {
         padding: 6rem 2rem;
         background: white;
@@ -184,7 +184,7 @@
         box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     
-    /* Services Section */
+    /* Services Section with the design */
     #services {
         padding: 6rem 2rem;
         background: #f1f5f9;

@@ -1,5 +1,5 @@
 
-    /* Reset and Base Styles */
+    /* Reset and Base Styles with the page*/
     * {
         margin: 0;
         padding: 0;
@@ -18,7 +18,7 @@
         color: inherit;
     }
     
-    /* Header and Navigation */
+    /* Header style and Navigation menu */
     header {
         background: linear-gradient(135deg, #0d6efd, #0c4bbd);
         color: white;
@@ -123,7 +123,7 @@
         color: #fff;
     }
     
-    /* About Section */
+    /* About Section with all the details */
     #about {
         padding: 6rem 2rem;
         background: white;
@@ -232,7 +232,7 @@
         font-size: 1rem;
     }
     
-    /* Animations */
+    /* Animations CSS and the elements*/
     @keyframes fadeInDown {
         from { opacity: 0; transform: translateY(-60px); }
         to { opacity: 1; transform: translateY(0); }
