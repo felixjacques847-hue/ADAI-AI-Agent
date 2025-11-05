@@ -19,7 +19,7 @@
             text-decoration: underline;
         }
 
-        /* Header */
+        /* HEADER with all the codes */
         header {
             background: rgba(0, 0, 0, 0.7);
             padding: 1rem 0;
@@ -55,7 +55,7 @@
             color: #fff;
         }
 
-        /* Hero Section (Home) */
+        /* Hero Section (Home) page with all the details */
         .hero {
             height: 100vh;
             background: url('https://via.placeholder.com/1920x1080?text=ADAI+AI+Agent+Background') no-repeat center center/cover;
