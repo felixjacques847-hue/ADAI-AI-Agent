@@ -1,8 +1,8 @@
-# ADAI-AI-Agent
+# Africa Deep AI - AI Agent
 
 We started this project to collaborate on a single project together while making it great. Everyone is updating their own pages and notifying the team of the updates.
 
-We strongly believe that this project will help a lot of people worldwide, we also plan to have monthly feedback according to the users' feedback.
+This project will help a lot of people worldwide. We also plan to have monthly feedback according to the users' feedback.
 
 # Our Future Projects:
 
