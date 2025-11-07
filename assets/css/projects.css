@@ -1,0 +1,116 @@
+:root{
+  --bg:#0f1724; /* dark background for hero */
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#0ea5a4;
+  --max-width:1100px;
+  --radius:10px;
+  --glass: rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+/* account for fixed header in global styles */
+body{padding-top:80px}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Roboto,system-ui,-apple-system,"Helvetica Neue",Arial;
+  color:#0b1220;
+  background:linear-gradient(180deg,#f8fafc 0%,#ffffff 100%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* container */
+.container{max-width:var(--max-width);margin:0 auto;padding:20px}
+
+/* hero */
+.hero{
+  /* override global full-viewport hero (height:100vh) */
+  height: auto !important;
+  background:linear-gradient(90deg,var(--bg), #263240);
+  color:#fff;
+  padding:36px 0 18px;
+  margin-bottom:18px;
+  min-height:180px; /* reduced hero so grid shows */
+}
+.hero .container{display:flex;flex-direction:column;gap:6px}
+.hero h1{margin:0;font-size:28px;letter-spacing:-0.5px}
+.lead{margin:0;opacity:0.95;color:rgba(255,255,255,0.9)}
+
+/* controls */
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.search-wrap{flex:1;min-width:220px}
+#search{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid rgba(11,18,32,0.08);
+  box-shadow:0 1px 0 rgba(11,18,32,0.02);
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{
+  background:transparent;border:1px solid rgba(11,18,32,0.06);
+  padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--muted)
+}
+.filter.active{background:var(--accent);color:white;border-color:transparent}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+/* card */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:14px;
+  box-shadow:0 6px 18px rgba(12,18,28,0.06);
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:120px;
+}
+.card h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:10px}
+.desc{margin:0 0 8px;color:#283044}
+.notes{margin:0 0 12px;color:var(--muted);font-size:13px}
+.card-foot{display:flex;justify-content:space-between;align-items:center}
+
+/* tags & badges */
+.tags span{display:inline-block;background:var(--glass);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted);margin-right:6px}
+.status.badge{font-size:12px;padding:6px 8px;border-radius:999px;color:#fff}
+.status.in-design{background:#7c3aed}
+.status.planned{background:#f97316}
+.status.in-progress{background:#10b981}
+.status.complete{background:#06b6d4}
+
+/* buttons */
+.btn{background:transparent;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn.small{background:linear-gradient(180deg,#fff,#f3f4f6);border:1px solid rgba(11,18,32,0.06)}
+
+/* modal */
+.modal{display:none}
+.modal.open{display:block}
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(2,6,23,0.45);
+  backdrop-filter:blur(4px);z-index:40;
+}
+.modal-panel{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:white;padding:20px;border-radius:12px;z-index:1101;max-width:680px;width:92%;
+  box-shadow:0 30px 60px rgba(2,6,23,0.4);
+}
+.modal-close{
+  position:absolute;right:12px;top:8px;background:transparent;border:none;font-size:22px;cursor:pointer;
+}
+.muted{color:var(--muted);font-size:14px;margin-top:8px}
+
+/* footer */
+.footer{padding:18px 20px;color:var(--muted);font-size:13px;text-align:center;margin-top:18px}
+
+/* header/nav from about page */
+header{background:transparent;padding:12px 0}
+nav{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;padding:0 20px}
+.logo{font-weight:700;font-size:18px}
+.logo span{font-weight:400;color:var(--muted)}
+.nav-links{list-style:none;display:flex;gap:16px;margin:0;padding:0}
+.nav-links a{text-decoration:none;color:inherit;padding:6px 8px;border-radius:6px}
+.nav-links a[aria-current="page"],.nav-links a.active{background:var(--accent);color:#fff}
