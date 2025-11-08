@@ -4,6 +4,11 @@
             padding: 0;
             box-sizing: border-box;
         }
+.social-icon:hover .icon-svg {
+  fill: #1da1f2;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 20px #1da1f2);
+}
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
